@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Enrollment Form for Surya Inspirasi Schools – Pendaftaran siswa baru secara online dengan proses mudah dan cepat.">
+  <meta name="author" content="Surya Inspirasi Schools" />
+  <meta name="theme-color" content="#1e3a8a" />
+  <title>Enrollment Form - Surya Inspirasi Schools</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/img/LOGO.ico" type="image/x-icon" />
+</head>
+<body>
+
+  <div class="container">
+    <!-- Logo Sekolah -->
+    <div class="logo-wrapper" style="text-align: center; margin-bottom: 20px;">
+      <img src="assets/img/LOGO.png" alt="Logo Surya Inspirasi Schools" style="height: 80px;" />
+    </div>
+
+    <!-- Judul Formulir -->
+    <h1>Enrollment Form<br />Surya Inspirasi Schools</h1>
+    
+    <form id="enrollmentForm" action="forms/process_form.php" method="POST" enctype="multipart/form-data">
+      <!-- STEP A -->
+      <div class="form-step active">
+        <h2 class="step-title">A. Data Siswa</h2>
+        <p class="step-description">Silakan lengkapi informasi siswa secara akurat.</p>
+
+        <!-- Identitas Dasar -->
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="nama_lengkap">Nama Lengkap</label>
+            <input type="text" id="nama_lengkap" name="nama_lengkap" placeholder="Sesuai akta kelahiran" autocomplete="name" required />
+          </div>
+          <div class="form-group">
+            <label for="nama_panggilan">Nama Panggilan</label>
+            <input type="text" id="nama_panggilan" name="nama_panggilan" placeholder="Contoh: Andi, Rara" required />
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="jenis_kelamin">Jenis Kelamin</label>
+            <select id="jenis_kelamin" name="jenis_kelamin" required>
+              <option value="">Pilih jenis kelamin</option>
+              <option value="Laki-Laki">Laki-Laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="agama">Agama</label>
+            <input type="text" id="agama" name="agama" placeholder="Contoh: Islam, Kristen" required />
+          </div>
+        </div>
+
+        <!-- Tempat Tanggal Lahir -->
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="tempat_lahir">Tempat Lahir</label>
+            <input type="text" id="tempat_lahir" name="tempat_lahir" placeholder="Contoh: Bandung" required />
+          </div>
+          <div class="form-group">
+            <label for="tanggal_lahir">Tanggal Lahir</label>
+            <input type="date" id="tanggal_lahir" name="tanggal_lahir" required />
+          </div>
+        </div>
+
+        <!-- Kewarganegaraan dan Bahasa -->
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="kewarganegaraan">Kewarganegaraan</label>
+            <select id="kewarganegaraan" name="kewarganegaraan" required>
+              <option value="">Memuat daftar negara...</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="bahasa_rumah">Bahasa Sehari-hari</label>
+            <input type="text" id="bahasa_rumah" name="bahasa_rumah" placeholder="Contoh: Indonesia, Jawa" required />
+          </div>
+        </div>
+
+        <!-- Struktur Keluarga -->
+        <div class="form-row-3col">
+          <div class="form-group">
+            <label for="anak_ke">Anak ke-berapa</label>
+            <input type="number" id="anak_ke" name="anak_ke" min="1" placeholder="Contoh: 1" required />
+          </div>
+          <div class="form-group">
+            <label for="saudara_kandung">Saudara Kandung</label>
+            <input type="number" id="saudara_kandung" name="saudara_kandung" min="0" placeholder="Contoh: 2" required />
+          </div>
+          <div class="form-group">
+            <label for="saudara_tiri">Saudara Tiri / Angkat</label>
+            <input type="number" id="saudara_tiri" name="saudara_tiri" min="0" placeholder="Contoh: 1" required />
+          </div>
+        </div>
+
+        <!-- Alasan -->
+        <div class="form-group">
+          <label for="alasan_sekolah">Alasan Memilih Surya Inspirasi Schools</label>
+          <textarea id="alasan_sekolah" name="alasan_sekolah" rows="4" placeholder="Contoh: Kurikulumnya sesuai nilai-nilai keluarga, lokasi strategis, rekomendasi teman..." required></textarea>
+        </div>
+      </div>
+
+      <!-- STEP B -->
+      <div class="form-step">
+        <h2 class="step-title">B. Keterangan Tempat Tinggal</h2>
+        <p class="step-description">Masukkan data alamat tempat tinggal siswa sesuai dokumen resmi.</p>
+
+        <!-- Provinsi dan Kabupaten/Kota -->
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="provinsi">Provinsi</label>
+            <select id="provinsi" name="provinsi" required>
+              <option value="">Pilih Provinsi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="kabupaten">Kabupaten / Kota</label>
+            <select id="kabupaten" name="kabupaten" required>
+              <option value="">Pilih Kabupaten/Kota</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Kecamatan dan Kelurahan -->
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="kecamatan">Kecamatan</label>
+            <select id="kecamatan" name="kecamatan" required>
+              <option value="">Pilih Kecamatan</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="kelurahan">Kelurahan / Desa</label>
+            <select id="kelurahan" name="kelurahan" required>
+              <option value="">Pilih Kelurahan/Desa</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Alamat Lengkap -->
+        <div class="form-group">
+          <label for="alamat">Alamat Lengkap</label>
+          <textarea id="alamat" name="alamat" rows="3" placeholder="Tuliskan alamat sesuai KTP atau KK" required></textarea>
+        </div>
+
+        <!-- RT/RW dan Telepon -->
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="rt_rw">RT / RW</label>
+            <input type="text" id="rt_rw" name="rt_rw" placeholder="Contoh: 004/007" required />
+          </div>
+          <div class="form-group">
+            <label for="telepon">No. Telepon / WhatsApp</label>
+            <input type="text" id="telepon" name="telepon" placeholder="08xxxxxxxxxx" required />
+          </div>
+        </div>
+
+        <!-- Tinggal Dengan -->
+        <div class="form-group">
+          <label for="tinggal_dengan">Tinggal Dengan</label>
+          <select id="tinggal_dengan" name="tinggal_dengan" required>
+            <option value="">Pilih</option>
+            <option value="Orang Tua">Orang Tua</option>
+            <option value="Wali">Wali</option>
+            <option value="Asrama">Asrama</option>
+            <option value="Kost">Kost</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- STEP C -->
+      <div class="form-step">
+        <h2 class="step-title">C. Keterangan Kesehatan</h2>
+        <p class="step-description">Silakan isi informasi kesehatan siswa dengan lengkap dan jujur.</p>
+
+        <div class="form-group">
+          <label for="golongan_darah">Golongan Darah</label>
+          <select name="golongan_darah" id="golongan_darah">
+            <option value="">Pilih Golongan Darah</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="AB">AB</option>
+            <option value="O">O</option>
+            <option value="Tidak Tahu">Tidak Tahu</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="penyakit">Riwayat Penyakit yang Pernah Diderita</label>
+          <textarea name="penyakit" id="penyakit" rows="2" placeholder="Contoh: Covid-19, TBC, Cacar"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="kelainan_jasmani">Kelainan Jasmani (jika ada)</label>
+          <input type="text" name="kelainan_jasmani" id="kelainan_jasmani" placeholder="Contoh: Tidak ada atau sebutkan secara spesifik" />
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="tinggi_badan">Tinggi Badan (cm)</label>
+            <input type="number" name="tinggi_badan" id="tinggi_badan" min="0" placeholder="Contoh: 140" />
+          </div>
+          <div class="form-group">
+            <label for="berat_badan">Berat Badan (kg)</label>
+            <input type="number" name="berat_badan" id="berat_badan" min="0" placeholder="Contoh: 35" />
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP D -->
+      <div class="form-step">
+        <h2 class="step-title">D. Keterangan Pendidikan</h2>
+        <p class="step-description">Informasi mengenai riwayat pendidikan sebelumnya yang wajib diisi secara lengkap.</p>
+
+        <div class="form-group">
+          <label for="sekolah_asal">Asal Sekolah</label>
+          <input
+            type="text"
+            name="sekolah_asal"
+            id="sekolah_asal"
+            placeholder="Contoh: SD Negeri 1 Jakarta"
+            required
+          />
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="ijazah">Tanggal & No. Ijazah</label>
+            <input
+              type="text"
+              name="ijazah"
+              id="ijazah"
+              placeholder="Contoh: 01 Juni 2023 / 1234/IJZ/2023"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="skl">Tanggal & No. SKL</label>
+            <input
+              type="text"
+              name="skl"
+              id="skl"
+              placeholder="Contoh: 15 Juni 2023 / 5678/SKL/2023"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="nisn">NISN (Nomor Induk Siswa Nasional)</label>
+            <input
+              type="text"
+              name="nisn"
+              id="nisn"
+              placeholder="Contoh: 1234567890"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lama_belajar">Lama Belajar (tahun)</label>
+            <input
+              type="number"
+              name="lama_belajar"
+              id="lama_belajar"
+              min="1"
+              max="12"
+              placeholder="Contoh: 6"
+              required
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP E -->
+      <div class="form-step">
+        <h2 class="step-title">E. Keterangan tentang Ayah Kandung</h2>
+        <p class="step-description">Lengkapi informasi berikut mengenai ayah kandung siswa.</p>
+
+        <div class="form-group">
+          <label for="nama_ayah">Nama Ayah Kandung</label>
+          <input
+            type="text"
+            name="nama_ayah"
+            id="nama_ayah"
+            placeholder="Tulis nama lengkap ayah"
+            required
+          />
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="ttl_ayah">Tempat & Tanggal Lahir</label>
+            <input
+              type="text"
+              name="ttl_ayah"
+              id="ttl_ayah"
+              placeholder="Contoh: Bandung, 15 Agustus 1980"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="agama_ayah">Agama</label>
+            <input
+              type="text"
+              name="agama_ayah"
+              id="agama_ayah"
+              placeholder="Contoh: Islam"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="wn_ayah">Kewarganegaraan</label>
+            <select name="wn_ayah" id="wn_ayah" required>
+              <option value="">Memuat daftar negara...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pendidikan_ayah">Pendidikan Terakhir</label>
+            <select name="pendidikan_ayah" id="pendidikan_ayah" required>
+              <option value="">Pilih</option>
+              <option value="SD">SD</option>
+              <option value="SMP">SMP</option>
+              <option value="SMA/SMK">SMA/SMK</option>
+              <option value="Diploma (D1-D4)">Diploma (D1–D4)</option>
+              <option value="Sarjana (S1)">Sarjana (S1)</option>
+              <option value="Magister (S2)">Magister (S2)</option>
+              <option value="Doktor (S3)">Doktor (S3)</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="pekerjaan_ayah">Pekerjaan</label>
+            <input
+              type="text"
+              name="pekerjaan_ayah"
+              id="pekerjaan_ayah"
+              placeholder="Contoh: Pegawai Swasta / Wiraswasta"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="gaji_ayah">Penghasilan per bulan (Rp)</label>
+            <input
+              type="text"
+              name="gaji_ayah"
+              id="gaji_ayah"
+              placeholder="Contoh: 4.000.000"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="alamat_ayah">Alamat Tempat Tinggal</label>
+          <textarea
+            name="alamat_ayah"
+            id="alamat_ayah"
+            rows="3"
+            placeholder="Tulis alamat rumah saat ini"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="telepon_ayah">Nomor HP / WhatsApp</label>
+            <input
+              type="text"
+              name="telepon_ayah"
+              id="telepon_ayah"
+              placeholder="Contoh: 08xxxxxxxxxx"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="status_ayah">Status Ayah</label>
+            <select name="status_ayah" id="status_ayah" required>
+              <option value="">Pilih</option>
+              <option value="Masih Hidup">Masih Hidup</option>
+              <option value="Sudah Meninggal">Sudah Meninggal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP F -->
+      <div class="form-step">
+        <h2 class="step-title">F. Keterangan tentang Ibu Kandung</h2>
+        <p class="step-description">Lengkapi informasi berikut mengenai ibu kandung siswa.</p>
+
+        <div class="form-group">
+          <label for="nama_ibu">Nama Ibu Kandung</label>
+          <input
+            type="text"
+            name="nama_ibu"
+            id="nama_ibu"
+            placeholder="Tulis nama lengkap ibu"
+            required
+          />
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="ttl_ibu">Tempat & Tanggal Lahir</label>
+            <input
+              type="text"
+              name="ttl_ibu"
+              id="ttl_ibu"
+              placeholder="Contoh: Surabaya, 10 Oktober 1983"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="agama_ibu">Agama</label>
+            <input
+              type="text"
+              name="agama_ibu"
+              id="agama_ibu"
+              placeholder="Contoh: Islam"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="wn_ibu">Kewarganegaraan</label>
+            <select name="wn_ibu" id="wn_ibu" required>
+              <option value="">Memuat daftar negara...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pendidikan_ibu">Pendidikan Terakhir</label>
+            <select name="pendidikan_ibu" id="pendidikan_ibu" required>
+              <option value="">Pilih</option>
+              <option value="SD">SD</option>
+              <option value="SMP">SMP</option>
+              <option value="SMA/SMK">SMA/SMK</option>
+              <option value="Diploma (D1-D4)">Diploma (D1–D4)</option>
+              <option value="Sarjana (S1)">Sarjana (S1)</option>
+              <option value="Magister (S2)">Magister (S2)</option>
+              <option value="Doktor (S3)">Doktor (S3)</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="pekerjaan_ibu">Pekerjaan</label>
+            <input
+              type="text"
+              name="pekerjaan_ibu"
+              id="pekerjaan_ibu"
+              placeholder="Contoh: Ibu Rumah Tangga / Guru"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="gaji_ibu">Penghasilan per bulan (Rp)</label>
+            <input
+              type="text"
+              name="gaji_ibu"
+              id="gaji_ibu"
+              placeholder="Contoh: 2.000.000"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="alamat_ibu">Alamat Tempat Tinggal</label>
+          <textarea
+            name="alamat_ibu"
+            id="alamat_ibu"
+            rows="3"
+            placeholder="Tulis alamat rumah saat ini"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="telepon_ibu">Nomor HP / WhatsApp</label>
+            <input
+              type="text"
+              name="telepon_ibu"
+              id="telepon_ibu"
+              placeholder="Contoh: 08xxxxxxxxxx"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="status_ibu">Status Ibu</label>
+            <select name="status_ibu" id="status_ibu" required>
+              <option value="">Pilih</option>
+              <option value="Masih Hidup">Masih Hidup</option>
+              <option value="Sudah Meninggal">Sudah Meninggal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP G -->
+      <div class="form-step">
+        <h2 class="step-title">G. Keterangan tentang Wali</h2>
+        <p class="step-description">Silakan isi informasi jika siswa memiliki wali yang berbeda dengan orang tua kandung.</p>
+
+        <div class="form-group">
+          <label for="nama_wali">Nama Wali</label>
+          <input type="text" name="nama_wali" id="nama_wali" placeholder="Tulis nama lengkap wali (jika ada)" />
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="ttl_wali">Tempat & Tanggal Lahir</label>
+            <input type="text" name="ttl_wali" id="ttl_wali" placeholder="Contoh: Bekasi, 21 Maret 1975" />
+          </div>
+
+          <div class="form-group">
+            <label for="wn_wali">Kewarganegaraan</label>
+            <select name="wn_wali" id="wn_wali">
+              <option value="">Memuat daftar negara...</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="pendidikan_wali">Pendidikan Terakhir</label>
+            <select name="pendidikan_wali" id="pendidikan_wali">
+              <option value="">Pilih</option>
+              <option value="SD">SD</option>
+              <option value="SMP">SMP</option>
+              <option value="SMA/SMK">SMA/SMK</option>
+              <option value="Diploma (D1-D4)">Diploma (D1–D4)</option>
+              <option value="Sarjana (S1)">Sarjana (S1)</option>
+              <option value="Magister (S2)">Magister (S2)</option>
+              <option value="Doktor (S3)">Doktor (S3)</option>
+              <option value="Lainnya">Lainnya</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pekerjaan_wali">Pekerjaan</label>
+            <input type="text" name="pekerjaan_wali" id="pekerjaan_wali" placeholder="Contoh: Karyawan / Wiraswasta" />
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="gaji_wali">Penghasilan per bulan (Rp)</label>
+            <input type="text" name="gaji_wali" id="gaji_wali" placeholder="Contoh: 3.500.000" />
+          </div>
+
+          <div class="form-group">
+            <label for="telepon_wali">Nomor HP/WA Wali</label>
+            <input type="text" name="telepon_wali" id="telepon_wali" placeholder="08xxxxxxxxxx" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="alamat_wali">Alamat Tempat Tinggal Wali</label>
+          <textarea name="alamat_wali" id="alamat_wali" rows="3" placeholder="Tulis alamat lengkap wali jika berbeda dengan orang tua"></textarea>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="rt_rw_wali">RT / RW</label>
+            <input type="text" name="rt_rw_wali" id="rt_rw_wali" placeholder="Contoh: 004/006" />
+          </div>
+
+          <div class="form-group">
+            <label for="provinsi_wali">Provinsi</label>
+            <select name="provinsi_wali" id="provinsi_wali" class="wilayah-dropdown">
+              <option value="">Pilih Provinsi</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="kabupaten_wali">Kabupaten/Kota</label>
+            <select name="kabupaten_wali" id="kabupaten_wali" class="wilayah-dropdown">
+              <option value="">Pilih Kabupaten/Kota</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="kecamatan_wali">Kecamatan</label>
+            <select name="kecamatan_wali" id="kecamatan_wali" class="wilayah-dropdown">
+              <option value="">Pilih Kecamatan</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="kelurahan_wali">Kelurahan / Desa</label>
+          <select name="kelurahan_wali" id="kelurahan_wali" class="wilayah-dropdown">
+            <option value="">Pilih Kelurahan/Desa</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- STEP H -->
+      <div class="form-step">
+        <h2 class="step-title">H. Minat dan Kegemaran Siswa</h2>
+        <p class="step-description">Tuliskan minat dan hobi siswa yang dapat mendukung perkembangan bakat di sekolah.</p>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="minat_kesenian">Kesenian yang Diminati</label>
+            <input
+              type="text"
+              name="minat_kesenian"
+              id="minat_kesenian"
+              placeholder="Contoh: Musik, Lukis, Tari"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="minat_olahraga">Olahraga yang Diminati</label>
+            <input
+              type="text"
+              name="minat_olahraga"
+              id="minat_olahraga"
+              placeholder="Contoh: Futsal, Renang, Atletik"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="minat_lain">Kegiatan / Minat Lainnya</label>
+          <input
+            type="text"
+            name="minat_lain"
+            id="minat_lain"
+            placeholder="Contoh: Coding, Bahasa Asing, Membaca"
+          />
+        </div>
+      </div>
+
+      <!-- STEP J -->
+      <div class="form-step">
+        <h2 class="step-title">J. Keterangan Kesehatan Siswa</h2>
+        <p class="step-description">Mohon informasikan kondisi kesehatan siswa untuk membantu sekolah memberikan pelayanan terbaik.</p>
+
+        <div class="form-group">
+          <label for="kondisi_medis">Apakah ada kondisi medis tertentu yang harus diperhatikan sekolah?</label>
+          <select name="kondisi_medis" id="kondisi_medis" required>
+            <option value="">Pilih</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="kondisi_medis_keterangan">Jika Ya, mohon dijelaskan</label>
+          <textarea name="kondisi_medis_keterangan" id="kondisi_medis_keterangan" rows="2" placeholder="Tuliskan jenis kondisi medis atau alergi khusus"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="pengobatan_rutin">Apakah putra/putri Anda dalam masa pengobatan rutin?</label>
+          <select name="pengobatan_rutin" id="pengobatan_rutin" required>
+            <option value="">Pilih</option>
+            <option value="Ya">Ya</option>
+            <option value="Tidak">Tidak</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pengobatan_rutin_keterangan">Jika Ya, mohon dijelaskan</label>
+          <textarea name="pengobatan_rutin_keterangan" id="pengobatan_rutin_keterangan" rows="2" placeholder="Tuliskan nama obat dan dosis jika ada"></textarea>
+        </div>
+
+        <div class="form-group" style="margin-top: 32px;">
+          <p style="font-weight: 600; color: #1e3a8a; margin-bottom: 10px;">
+            Persetujuan Orang Tua/Wali dalam Keadaan Darurat:
+          </p>
+          <ul style="margin-left: 20px; color: #374151; line-height: 1.6;">
+            <li>Saya memberikan izin kepada sekolah untuk membawa siswa ke klinik atau rumah sakit terdekat bila terjadi keadaan darurat dan saya tidak dapat dihubungi.</li>
+            <li>Saya bertanggung jawab atas seluruh biaya pengobatan yang timbul akibat kejadian tersebut.</li>
+            <li>Saya membebaskan sekolah dari tuntutan hukum atas risiko yang terjadi dalam keadaan darurat.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- STEP K -->
+
+      <!-- STEP K -->
+      <div class="form-step">
+        <h2 class="step-title">K. Persetujuan Orang Tua / Wali</h2>
+
+        <div class="form-group">
+          <p>Saya juga mengakui dan menyetujui kebijakan berikut:</p>
+          <ul style="margin-left: 20px; line-height: 1.6; color: #374151;">
+            <li>Kegiatan siswa dapat didokumentasikan untuk keperluan publikasi resmi sekolah. Penolakan harus disampaikan tertulis.</li>
+            <li>Sekolah memiliki kebijakan tegas terhadap penyalahgunaan narkoba, rokok, dan alkohol.</li>
+            <li>Permohonan bantuan keuangan harus diajukan secara tertulis sesuai prosedur sekolah.</li>
+            <li>Pernyataan resmi adalah yang tertulis. Pernyataan lisan tidak mengikat.</li>
+            <li>Segala bentuk pencemaran nama baik melalui media akan ditindak sesuai kebijakan sekolah.</li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <p>
+            Saya menyatakan bahwa seluruh informasi yang saya berikan dalam formulir ini adalah benar dan dapat dipertanggungjawabkan.
+            Saya memahami bahwa apabila ditemukan ketidaksesuaian, pihak sekolah berhak melakukan peninjauan kembali terhadap status penerimaan siswa.
+          </p>
+        </div>
+
+        <hr style="margin: 30px 0;" />
+
+        <h3 style="color: #1e3a8a;">Tanda Tangan Orang Tua / Wali</h3>
+
+        <!-- ======================= -->
+        <!-- AYAH SIGNATURE OPTIONS -->
+        <!-- ======================= -->
+        <div class="form-group">
+          <label>Metode Tanda Tangan Ayah:</label>
+          <select onchange="toggleSignatureOption('ayah', this.value)">
+            <option value="upload">Upload Gambar</option>
+            <option value="draw">Tulis Langsung (Canvas)</option>
+          </select>
+
+          <!-- Upload Ayah -->
+          <div id="upload_ayah_section" style="margin-top: 10px;">
+            <label for="ttd_ayah">Upload Tanda Tangan Ayah</label>
+            <input type="file" name="ttd_ayah" id="ttd_ayah" accept="image/*" />
+            <small>*Format JPG/PNG</small>
+          </div>
+
+          <!-- Canvas Ayah -->
+          <div id="draw_ayah_section" style="display:none; margin-top: 12px;">
+            <label for="canvasAyah">Tulis Tanda Tangan Ayah:</label>
+            <canvas id="canvasAyah" width="300" height="100"></canvas>
+            <button type="button" class="clear-btn" onclick="clearCanvas('canvasAyah')">Bersihkan</button>
+            <input type="hidden" name="ttd_ayah_digital" id="ttd_ayah_digital" />
+          </div>
+        </div>
+
+        <!-- ======================= -->
+        <!-- IBU SIGNATURE OPTIONS -->
+        <!-- ======================= -->
+        <div class="form-group" style="margin-top: 28px;">
+          <label>Metode Tanda Tangan Ibu:</label>
+          <select onchange="toggleSignatureOption('ibu', this.value)">
+            <option value="upload">Upload Gambar</option>
+            <option value="draw">Tulis Langsung (Canvas)</option>
+          </select>
+
+          <!-- Upload Ibu -->
+          <div id="upload_ibu_section" style="margin-top: 10px;">
+            <label for="ttd_ibu">Upload Tanda Tangan Ibu</label>
+            <input type="file" name="ttd_ibu" id="ttd_ibu" accept="image/*" />
+            <small>*Format JPG/PNG</small>
+          </div>
+
+          <!-- Canvas Ibu -->
+          <div id="draw_ibu_section" style="display:none; margin-top: 12px;">
+            <label for="canvasIbu">Tulis Tanda Tangan Ibu:</label>
+            <canvas id="canvasIbu" width="300" height="100"></canvas>
+            <button type="button" class="clear-btn" onclick="clearCanvas('canvasIbu')">Bersihkan</button>
+            <input type="hidden" name="ttd_ibu_digital" id="ttd_ibu_digital" />
+          </div>
+        </div>
+
+        <hr style="margin: 40px 0;" />
+
+        <h3 style="color: #1e3a8a;">Upload Pas Foto Hitam Putih Ukuran 3x4</h3>
+
+        <div class="form-row-3col">
+          <div class="form-group">
+            <label for="pas_foto_1">Pas Foto 1</label>
+            <input type="file" name="pas_foto_1" id="pas_foto_1" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <label for="pas_foto_2">Pas Foto 2</label>
+            <input type="file" name="pas_foto_2" id="pas_foto_2" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <label for="pas_foto_3">Pas Foto 3</label>
+            <input type="file" name="pas_foto_3" id="pas_foto_3" accept="image/*" required />
+          </div>
+        </div>
+
+        <small style="display:block; margin-top:10px; color:#475569;">
+          *Gunakan foto terbaru sesuai ketentuan formulir cetak.
+        </small>
+      </div>
+
+      <!-- STEP L -->
+      <div class="form-step">
+        <h2 class="step-title">L. Student Pass Requisition Form</h2>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="tanggal_pass">Tanggal Pengisian</label>
+            <input type="date" name="tanggal_pass" id="tanggal_pass" required />
+          </div>
+
+          <div class="form-group">
+            <label for="kelas_pass">Kelas</label>
+            <input type="text" name="kelas_pass" id="kelas_pass" placeholder="Contoh: 6A / 7 SMP" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nama_siswa_pass">Nama Siswa</label>
+          <input type="text" name="nama_siswa_pass" id="nama_siswa_pass" placeholder="Tulis nama lengkap siswa" required />
+        </div>
+
+        <div class="form-row-2col">
+          <div class="form-group">
+            <label for="nama_ayah_pass">Nama Ayah</label>
+            <input type="text" name="nama_ayah_pass" id="nama_ayah_pass" placeholder="Contoh: Budi Santoso" required />
+          </div>
+          <div class="form-group">
+            <label for="nama_ibu_pass">Nama Ibu</label>
+            <input type="text" name="nama_ibu_pass" id="nama_ibu_pass" placeholder="Contoh: Siti Aminah" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="independent">Independent</label>
+          <select name="independent" id="independent" required>
+            <option value="">Pilih</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Jenis Kartu yang Dibutuhkan:</label>
+          <div style="display: flex; gap: 30px; margin-top: 10px;">
+            <label><input type="radio" name="jenis_kartu" value="Student Pass" required /> Student Pass</label>
+            <label><input type="radio" name="jenis_kartu" value="Parents Pass" required /> Parents Pass</label>
+            <label><input type="radio" name="jenis_kartu" value="Pick-up Pass" required /> Pick-up Pass</label>
+          </div>
+        </div>
+
+        <hr style="margin: 30px 0;" />
+
+        <h3>Upload Foto 3x4 Berwarna</h3>
+        <div class="form-row-3col">
+          <div class="form-group">
+            <label for="foto_siswa_pass">Foto Siswa</label>
+            <input type="file" name="foto_siswa_pass" id="foto_siswa_pass" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <label for="foto_ayah_pass">Foto Ayah</label>
+            <input type="file" name="foto_ayah_pass" id="foto_ayah_pass" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <label for="foto_ibu_pass">Foto Ibu</label>
+            <input type="file" name="foto_ibu_pass" id="foto_ibu_pass" accept="image/*" required />
+          </div>
+        </div>
+
+        <hr style="margin: 30px 0;" />
+
+        <h3>Payment</h3>
+        <p><strong>Biaya:</strong> Rp30.000 / ID Card</p>
+        <small>Harap unggah bukti pembayaran di bawah ini.</small>
+
+        <div class="form-group">
+          <label for="bukti_pembayaran_pass">Upload Bukti Pembayaran</label>
+          <input type="file" name="bukti_pembayaran_pass" id="bukti_pembayaran_pass" accept="image/*,application/pdf" required />
+        </div>
+
+        <div class="form-group">
+          <label for="catatan_pass">Catatan Tambahan (Opsional)</label>
+          <textarea name="catatan_pass" id="catatan_pass" rows="2" placeholder="Tulis jika ada catatan atau permintaan khusus..."></textarea>
+        </div>
+      </div>
+
+      <!-- NAVIGATION BUTTONS -->
+      <div class="form-navigation">
+        <button type="button" id="prevBtn">Kembali</button>
+        <button type="button" id="nextBtn">Lanjut</button>
+        <button type="submit" id="submitBtn" style="display:none;">Kirim Formulir</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="assets/js/form-step.js"></script>
+</body>
+</html>
