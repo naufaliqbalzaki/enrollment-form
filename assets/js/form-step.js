@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
   showStep(currentStep);
 
   // ======================
-  // TANDA TANGAN DIGITAL
+  // TANDA TANGAN DIGITAL (Canvas + Touch Support)
   // ======================
   function enableDrawing(canvasId, hiddenInputId) {
     const canvas = document.getElementById(canvasId);
@@ -45,17 +45,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const ctx = canvas.getContext("2d");
     let isDrawing = false;
 
-    canvas.addEventListener("mousedown", () => {
+    function getPos(e) {
+      const rect = canvas.getBoundingClientRect();
+      if (e.touches) {
+        return {
+          x: e.touches[0].clientX - rect.left,
+          y: e.touches[0].clientY - rect.top
+        };
+      } else {
+        return {
+          x: e.clientX - rect.left,
+          y: e.clientY - rect.top
+        };
+      }
+    }
+
+    // Mouse
+    canvas.addEventListener("mousedown", (e) => {
       isDrawing = true;
       ctx.beginPath();
+      const pos = getPos(e);
+      ctx.moveTo(pos.x, pos.y);
     });
 
     canvas.addEventListener("mousemove", (e) => {
       if (!isDrawing) return;
-      const rect = canvas.getBoundingClientRect();
+      const pos = getPos(e);
       ctx.lineWidth = 2;
       ctx.lineCap = "round";
-      ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+      ctx.lineTo(pos.x, pos.y);
       ctx.stroke();
     });
 
@@ -68,6 +86,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     canvas.addEventListener("mouseleave", () => {
       isDrawing = false;
+    });
+
+    // Touch
+    canvas.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      isDrawing = true;
+      ctx.beginPath();
+      const pos = getPos(e);
+      ctx.moveTo(pos.x, pos.y);
+    });
+
+    canvas.addEventListener("touchmove", (e) => {
+      if (!isDrawing) return;
+      const pos = getPos(e);
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+    });
+
+    canvas.addEventListener("touchend", () => {
+      isDrawing = false;
+      const dataUrl = canvas.toDataURL("image/png");
+      const hiddenInput = document.getElementById(hiddenInputId);
+      if (hiddenInput) hiddenInput.value = dataUrl;
     });
   }
 
@@ -87,20 +130,15 @@ document.addEventListener("DOMContentLoaded", function () {
   enableDrawing("canvasIbu", "ttd_ibu_digital");
 
   // ======================
-  // TOGGLE TANDA TANGAN METHOD
+  // TOGGLE SIGNATURE OPTION (Canvas / Upload)
   // ======================
   window.toggleSignatureOption = function (type, method) {
     const uploadEl = document.getElementById(`upload_${type}_section`);
     const drawEl = document.getElementById(`draw_${type}_section`);
 
     if (uploadEl && drawEl) {
-      if (method === "upload") {
-        uploadEl.style.display = "block";
-        drawEl.style.display = "none";
-      } else {
-        uploadEl.style.display = "none";
-        drawEl.style.display = "block";
-      }
+      uploadEl.style.display = method === "upload" ? "block" : "none";
+      drawEl.style.display = method === "draw" ? "block" : "none";
     }
   };
 
@@ -168,10 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
-  // STEP B (Siswa)
   initWilayahDropdown("provinsi", "kabupaten", "kecamatan", "kelurahan");
-
-  // STEP G (Wali)
   initWilayahDropdown("provinsi_wali", "kabupaten_wali", "kecamatan_wali", "kelurahan_wali");
 
   // ======================

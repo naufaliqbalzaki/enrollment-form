@@ -139,15 +139,25 @@ textarea {
 }
 
 /* === Canvas Signature === */
-canvas {
+.signature-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.signature-canvas {
+  width: 100%;
+  max-width: 400px;
+  height: 100px;
   border: 2px dashed #94a3b8;
   border-radius: 12px;
-  margin: 10px 0;
   background-color: #f9fafb;
+  display: block;
+  margin: 10px 0;
   transition: box-shadow 0.3s ease;
 }
 
-canvas:hover {
+.signature-canvas:hover {
   box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.15);
 }
 
@@ -234,6 +244,11 @@ input[type="file"]::-webkit-file-upload-button:hover {
 
   h1 {
     font-size: 28px;
+  }
+
+  .signature-canvas {
+    width: 100%;
+    max-width: 100%;
   }
 }
 

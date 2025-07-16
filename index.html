@@ -737,9 +737,7 @@
 
         <h3 style="color: #1e3a8a;">Tanda Tangan Orang Tua / Wali</h3>
 
-        <!-- ======================= -->
-        <!-- AYAH SIGNATURE OPTIONS -->
-        <!-- ======================= -->
+        <!-- Tanda Tangan Ayah -->
         <div class="form-group">
           <label>Metode Tanda Tangan Ayah:</label>
           <select onchange="toggleSignatureOption('ayah', this.value)">
@@ -747,25 +745,23 @@
             <option value="draw">Tulis Langsung (Canvas)</option>
           </select>
 
-          <!-- Upload Ayah -->
           <div id="upload_ayah_section" style="margin-top: 10px;">
             <label for="ttd_ayah">Upload Tanda Tangan Ayah</label>
             <input type="file" name="ttd_ayah" id="ttd_ayah" accept="image/*" />
             <small>*Format JPG/PNG</small>
           </div>
 
-          <!-- Canvas Ayah -->
-          <div id="draw_ayah_section" style="display:none; margin-top: 12px;">
+          <div id="draw_ayah_section" style="display: none; margin-top: 12px;">
             <label for="canvasAyah">Tulis Tanda Tangan Ayah:</label>
-            <canvas id="canvasAyah" width="300" height="100"></canvas>
+            <div class="signature-wrapper">
+              <canvas id="canvasAyah" class="signature-canvas"></canvas>
+            </div>
             <button type="button" class="clear-btn" onclick="clearCanvas('canvasAyah')">Bersihkan</button>
             <input type="hidden" name="ttd_ayah_digital" id="ttd_ayah_digital" />
           </div>
         </div>
 
-        <!-- ======================= -->
-        <!-- IBU SIGNATURE OPTIONS -->
-        <!-- ======================= -->
+        <!-- Tanda Tangan Ibu -->
         <div class="form-group" style="margin-top: 28px;">
           <label>Metode Tanda Tangan Ibu:</label>
           <select onchange="toggleSignatureOption('ibu', this.value)">
@@ -773,17 +769,17 @@
             <option value="draw">Tulis Langsung (Canvas)</option>
           </select>
 
-          <!-- Upload Ibu -->
           <div id="upload_ibu_section" style="margin-top: 10px;">
             <label for="ttd_ibu">Upload Tanda Tangan Ibu</label>
             <input type="file" name="ttd_ibu" id="ttd_ibu" accept="image/*" />
             <small>*Format JPG/PNG</small>
           </div>
 
-          <!-- Canvas Ibu -->
-          <div id="draw_ibu_section" style="display:none; margin-top: 12px;">
+          <div id="draw_ibu_section" style="display: none; margin-top: 12px;">
             <label for="canvasIbu">Tulis Tanda Tangan Ibu:</label>
-            <canvas id="canvasIbu" width="300" height="100"></canvas>
+            <div class="signature-wrapper">
+              <canvas id="canvasIbu" class="signature-canvas"></canvas>
+            </div>
             <button type="button" class="clear-btn" onclick="clearCanvas('canvasIbu')">Bersihkan</button>
             <input type="hidden" name="ttd_ibu_digital" id="ttd_ibu_digital" />
           </div>
